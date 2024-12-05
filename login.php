@@ -1,24 +1,23 @@
 <?php
-// Inclure la configuration de la base de données
+
 require_once 'config.php';
 
-// Initialiser les variables pour les messages
 $error = '';
 
-// Vérifier si le formulaire a été soumis
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username']; // Récupérer le nom d'utilisateur
-    $password = $_POST['password']; // Récupérer le mot de passe (non utilisé ici)
+    $username = $_POST['username']; 
+    $password = $_POST['password']; 
 
-    // Vérifier si l'utilisateur existe dans la base de données
     $stmt = $pdo->prepare("SELECT * FROM users WHERE username = :username");
     $stmt->bindParam(':username', $username);
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($user) {
-        // L'utilisateur existe
-        header("Location: dashboard.php"); // Redirection vers une page après connexion
+        session_start();
+        $_SESSION['username'] = $user['username'];
+        
+        header("Location: dashboard.php"); 
         exit();
     } else {
         // L'utilisateur n'existe pas
