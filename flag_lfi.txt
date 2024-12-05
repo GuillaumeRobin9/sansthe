@@ -1,1 +1,1 @@
-xx_FLAG_LFI_xx
+hehe le flag c'est le fichier passwd c'est pas celui-ci (C'est nous qui decidons ok?)
