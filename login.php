@@ -52,7 +52,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <button class="button login__submit" type="submit">
                         <span class="button__text">Connexion</span>
                         <i class="button__icon fas fa-chevron-right"></i>
-                    </button>				
+                    </button>
+                    <button class="button login__submit" type="button" onclick="window.location.href='inscription.php';">
+                        <span class="button__text">Inscription</span>
+                        <i class="button__icon fas fa-chevron-right"></i>
+                    </button>
                 </form>
                 <?php if ($error): ?>
                     <p style="color: red;"><?= htmlspecialchars($error) ?></p>

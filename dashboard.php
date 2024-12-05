@@ -15,15 +15,51 @@ $query = "SELECT * FROM users WHERE username = '$username'";
 $stmt = $pdo->query($query);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if ($user) {
-    echo "Bienvenue, " . htmlspecialchars($user['prenom']) . " " . htmlspecialchars($user['nom']) . " " . htmlspecialchars($user['username']) . " !";
-} 
-
-if ($user) {
-    echo "Feliciation vous êtes admin de façon (non) légale voici le flag WARGAME{FLAGED2NDORDER}!";
-} 
-
-else {
-    echo "Utilisateur introuvable.";
-}
 ?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Santé</title>
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <h2>Mon Espace Santé</h2>
+            <ul>
+                <li><a href="mon_espace.php">Mon Espace</a></li>
+                <li><a href="#">Mes Rendez-vous</a></li>
+                <li><a href="#">Historique Médical</a></li>
+                <li><a href="#">Messages</a></li>
+                <li><a href="#">Déconnexion</a></li>
+            </ul>
+        </div>
+        
+        <div class="main-content">
+            <div class="header">
+                <h1>Bienvenue, <?php echo htmlspecialchars($user['prenom']) . " " . htmlspecialchars($user['nom']); ?>!</h1>
+            </div>
+            <div class="stats">
+                <div class="card">
+                    <h3>Dernière Consultation</h3>
+                    <p>Votre dernière consultation médicale a eu lieu le 15 Novembre 2024.</p>
+                </div>
+                <div class="card">
+                    <h3>Rendez-vous à venir</h3>
+                    <p>Prochain rendez-vous le 30 Décembre 2024.</p>
+                </div>
+            </div>
+
+            <div class="message">
+                <?php if ($user['username'] == 'admin'): ?>
+                    <p>Félicitations, vous êtes admin de façon (non) légale. Voici votre flag : <strong>WARGAME{FLAGED2NDORDER}</strong></p>
+                <?php else: ?>
+                    <p>Utilisateur introuvable.</p>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
