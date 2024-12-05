@@ -13,17 +13,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($user) {
+    if ($user && password_verify($password, $user['password'])) {
         session_start();
         $_SESSION['username'] = $user['username'];
         
         header("Location: dashboard.php"); 
         exit();
     } else {
-        // L'utilisateur n'existe pas
-        $error = "Nom d'utilisateur incorrect.";
+        // Si l'utilisateur n'existe pas ou que le mot de passe est incorrect
+        $error = "Nom d'utilisateur ou mot de passe incorrect.";
     }
 }
+
 ?>
 
 <!DOCTYPE html>

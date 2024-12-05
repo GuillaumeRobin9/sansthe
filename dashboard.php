@@ -2,27 +2,28 @@
 session_start();
 
 if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
+    header('Location: login.php');
     exit();
 }
 
+require_once 'config.php';
+
 $username = $_SESSION['username'];
 
-?>
+$query = "SELECT * FROM users WHERE username = '$username'"; 
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenue sur votre espace</title>
-    <link rel="stylesheet" href="dashboard.css">
-</head>
-<body>
-    <div class="dashboard-container">
-        <h1>Bienvenue, <?= htmlspecialchars($username); ?> !</h1>
-        <p>Sur votre espace.</p>
-        <!-- Ajoutez ici d'autres éléments de votre dashboard -->
-    </div>
-</body>
-</html>
+$stmt = $pdo->query($query);
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if ($user) {
+    echo "Bienvenue, " . htmlspecialchars($user['prenom']) . " " . htmlspecialchars($user['nom']) . " " . htmlspecialchars($user['username']) . " !";
+} 
+
+if ($user) {
+    echo "Feliciation vous êtes admin de façon (non) légale voici le flag WARGAME{FLAGED2NDORDER}!";
+} 
+
+else {
+    echo "Utilisateur introuvable.";
+}
+?>

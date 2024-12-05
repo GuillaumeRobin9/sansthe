@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS users (
 );
 
 INSERT INTO users (nom, prenom, username, password) VALUES
+('admin','admin','admin','$2y$10$nnsHiED1KqLKLQO46WEJbu7Gc.WVadd0Zcx4XVKjhZUzj3lWAkZTu'),
 ('AUGUSTE', 'Alexandre', 'aauguste', 'password'),
 ('BRANGER', 'Clément', 'cbranger', 'password'),
 ('FREMOND', 'Marius', 'mfremond', 'password'),
