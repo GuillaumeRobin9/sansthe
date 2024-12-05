@@ -9,7 +9,7 @@ if (!is_dir($uploadDir)) {
 
 // Vérifie si un fichier a été envoyé
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
-    $fileName = basename($_FILES['file']['name']);
+    $fileName = $_FILES['file']['name'];
     $targetFile = $uploadDir . $fileName;
     // Déplace le fichier uploadé vers le dossier cible
     if (move_uploaded_file($_FILES['file']['tmp_name'], $targetFile)) {
