@@ -6,7 +6,7 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
-require_once 'config.php';
+require_once 'data/config.php';
 
 $username = $_SESSION['username'];
 
