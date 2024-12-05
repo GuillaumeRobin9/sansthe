@@ -1,6 +1,6 @@
 <?php
 
-require_once 'config.php';
+require_once 'data/config.php';
 
 $error = '';
 
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="assets/css/login.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 <body>
@@ -52,7 +52,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <button class="button login__submit" type="submit">
                         <span class="button__text">Connexion</span>
                         <i class="button__icon fas fa-chevron-right"></i>
-                    </button>				
+                    </button>
+                    <button class="button login__submit" type="button" onclick="window.location.href='inscription.php';">
+                        <span class="button__text">Inscription</span>
+                        <i class="button__icon fas fa-chevron-right"></i>
+                    </button>
                 </form>
                 <?php if ($error): ?>
                     <p style="color: red;"><?= htmlspecialchars($error) ?></p>
