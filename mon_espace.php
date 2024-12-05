@@ -70,13 +70,23 @@
             background-color: #f9f9f9;
             border: 1px solid #ddd;
             border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .file-list a {
-            color: #4CAF50;
-            text-decoration: none;
+        .file-list form {
+            margin: 0;
         }
-        .file-list a:hover {
-            text-decoration: underline;
+        .file-list button {
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .file-list button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
@@ -87,7 +97,7 @@
 </header>
 
 <main>
-    <h2>Uploader et Télécharger des Fichiers</h2>
+    <h2>Uploader et Gérer les Fichiers</h2>
 
     <!-- Formulaire d'Upload -->
     <form action="upload.php" method="POST" enctype="multipart/form-data">
@@ -109,9 +119,15 @@
                 // Récupère la liste des fichiers
                 $files = array_diff(scandir($uploadDir), array('.', '..'));
                 
-                // Affiche chaque fichier
+                // Affiche chaque fichier avec un bouton de téléchargement
                 foreach ($files as $file) {
-                    echo "<li><a href='{$uploadDir}{$file}' download>{$file}</a></li>";
+                    echo "<li>
+                            <span>{$file}</span>
+                            <form action='dw.php' method='POST'>
+                                <input type='hidden' name='file' value='{$file}'>
+                                <button type='submit'>Télécharger</button>
+                            </form>
+                          </li>";
                 }
             } else {
                 echo "<li>Aucun fichier disponible.</li>";
@@ -120,6 +136,7 @@
         </ul>
     </div>
 </main>
+
 
 </body>
 </html>
