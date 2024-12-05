@@ -1,0 +1,9 @@
+
+User-agent: *
+Disallow: /hidden/old_backups/
+Disallow: /admin/
+Disallow: /hidden/backup_config.php
+Disallow: /not_here/
+Disallow: /nothingHere/
+Disallow: /flag/
+
