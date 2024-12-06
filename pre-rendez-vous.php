@@ -4,16 +4,11 @@ if (!isset($_SESSION['username'])) {
     header('Location: login.php');
     exit();
 }
-
 require_once 'data/config.php';
-
 $username = $_SESSION['username'];
-
 $query = "SELECT * FROM users WHERE username = '$username'"; 
-
 $stmt = $pdo->query($query);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
 $error = '';
 $success = '';
 
@@ -25,8 +20,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $douleurs = $_POST['echelle_douleur'];
     $raison = $_POST['raison']; 
     $etat_sante = $_POST['etat_sante'];
-
-    // eval($raison);
     
     $sql = "INSERT INTO rendezvous (nom, prenom, age, antecedents, douleurs, raison, etat_sante) 
             VALUES (:nom, :prenom, :age, :antecedents, :douleurs, :raison, :etat_sante)";
@@ -54,7 +47,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="container mt-5">
         <h1>Bienvenue, <?php echo htmlspecialchars($user['prenom']) . " " . htmlspecialchars($user['nom']); ?>!</h1>
-        <p>Bienvenue, <?php echo $user['prenom'] . " " . $user['nom']; ?>!</p>
         <h2>Formulaire de pré-rendez-vous médical</h2>
         <p>Nos médecins sont débordés et les délais s'allongent. Pour accélérer le processus, veuillez remplir ce formulaire avant de vous rendre à votre rendez-vous.</p>
         <p><strong>Tout le monde est gagnant, vous serez pris en charge plus rapidement et nos médecins pourront vous aider plus efficacement. Merci d'avance pour votre coopération.</strong></p>
