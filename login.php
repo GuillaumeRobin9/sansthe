@@ -38,6 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="screen">
             <div class="screen__content">
                 <form class="login" method="POST" action="">
+                    <p class="login__subtitle">Connectez-vous pour accéder à votre espace santé</p>
                     <div class="login__field">
                         <i class="login__icon fas fa-user"></i>
                         <input type="text" class="login__input" placeholder="Nom d'utilisateur" name="username" required>

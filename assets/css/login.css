@@ -11,6 +11,12 @@ body {
 	background: linear-gradient(90deg, #C7C5F4, #776BCC);		
 }
 
+h2 {
+	font-weight: 700;
+	font-size: 24px;
+	color: #4C489D;
+}
+
 .container {
 	display: flex;
 	align-items: center;
