@@ -43,8 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 ?>
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -52,8 +50,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulaire de Pré-rendez-vous</title>
     <link rel="stylesheet" href="assets/css/pre-rdv.css">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJ02KMQ9X4A0ssG12xU5yH8DhvF4q4B0dhj0f6leZisI9M2o0rmc6k6YboE9" crossorigin="anonymous">
 </head>
 <body>
     <div class="container mt-5">
@@ -85,11 +81,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label for="antecedents" class="form-label">Antécédents médicaux</label>
                 <textarea name="antecedents" id="antecedents" class="form-control"></textarea>
             </div>
-            <div class="mb-3">
-                <label for="douleur" class="form-label">Douleurs</label>
-                <textarea name="douleur" id="douleur" class="form-control"></textarea>
-            </div>
-
             <div class="mb-3">
                 <label for="echelle_douleur" class="form-label">Échelle de la douleur (1-10)</label>
                 <input type="range" name="echelle_douleur" id="echelle_douleur" class="form-range" min="1" max="10" value="5" required>
