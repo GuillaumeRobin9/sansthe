@@ -89,12 +89,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="mb-3">
                 <label for="raison" class="form-label">Raison du rendez-vous</label>
                 <textarea name="raison" id="raison" class="form-control" required></textarea>
-            </div>
+                </div>
             <button type="submit" class="btn btn-primary">Envoyer</button>
         </form>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         const rangeInput = document.getElementById("echelle_douleur");
         const output = document.getElementById("rangeOutput");
