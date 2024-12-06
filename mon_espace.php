@@ -7,9 +7,6 @@ if (!isset($_SESSION['username'])) {
 }
 
 require_once 'data/config.php';
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">

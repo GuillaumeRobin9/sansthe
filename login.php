@@ -20,13 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: dashboard.php"); 
         exit();
     } else {
-        // Si l'utilisateur n'existe pas ou que le mot de passe est incorrect
         $error = "Nom d'utilisateur ou mot de passe incorrect.";
     }
 }
-
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
