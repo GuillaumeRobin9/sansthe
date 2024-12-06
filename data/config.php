@@ -1,6 +1,6 @@
 <?php
 // Configuration de la connexion à la base de données
-$host = 'localhost'; // Nom d'hôte 
+$host = 'mysql'; // Nom d'hôte 
 $dbname = 'sansthe'; // Nom de la base de données
 $username = 'root';  // Nom d'utilisateur MySQL
 $password = 'password';      // Mot de passe MySQL
