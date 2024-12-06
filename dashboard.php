@@ -31,7 +31,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
             <ul>
                 <li><a href="mon_espace.php">Mon Espace</a></li>
                 <li><a href="pre-rendez-vous.php">Formulaire de pre-rendez-vous</a></li>
-                <li><a href="#">Historique Médical</a></li>
+                <li><a href="mon_espace.php">Mon espace</a></li>
                 <li><a href="#">Messages</a></li>
                 <li><a href="#">Déconnexion</a></li>
             </ul>

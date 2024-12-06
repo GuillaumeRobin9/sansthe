@@ -168,6 +168,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
     $fileName = $_FILES['file']['name'];
     $targetFile = $uploadDir . $fileName;
     // Déplace le fichier uploadé vers le dossier cible
+    // echo $targetFile;
     if (move_uploaded_file($_FILES['file']['tmp_name'], $targetFile)) {
         //echo "Fichier uploadé avec succès : <a href='{$targetFile}'>{$fileName}</a>";
     } else {
