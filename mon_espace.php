@@ -100,43 +100,78 @@
     <h2>Uploader et Gérer les Fichiers</h2>
 
     <!-- Formulaire d'Upload -->
-    <form action="upload.php" method="POST" enctype="multipart/form-data">
+    <form action="" method="POST" enctype="multipart/form-data">
         <label for="file">Sélectionnez un fichier à uploader :</label>
         <input type="file" id="file" name="file" required>
         <button type="submit">Uploader</button>
     </form>
 
     <!-- Liste des Fichiers Disponibles -->
-    <div class="file-list">
-        <h3>Fichiers disponibles :</h3>
-        <ul>
-            <?php
-            // Chemin du dossier des fichiers
-            $uploadDir = 'uploads/';
+<div class="file-list">
+    <h3>Fichiers disponibles :</h3>
+    <ul>
+        <?php
+        // Chemin du dossier des fichiers
+        $uploadDir = 'uploads/';
+        
+        // Vérifie si le dossier existe
+        if (is_dir($uploadDir)) {
+            // Récupère la liste des fichiers
+            $files = array_diff(scandir($uploadDir), array('.', '..'));
             
-            // Vérifie si le dossier existe
-            if (is_dir($uploadDir)) {
-                // Récupère la liste des fichiers
-                $files = array_diff(scandir($uploadDir), array('.', '..'));
-                
-                // Affiche chaque fichier avec un bouton de téléchargement
-                foreach ($files as $file) {
-                    echo "<li>
-                            <span>{$file}</span>
-                            <form action='dw.php' method='POST'>
-                                <input type='hidden' name='file' value='{$file}'>
-                                <button type='submit'>Télécharger</button>
-                            </form>
-                          </li>";
+            // Affiche chaque fichier avec son contenu
+            foreach ($files as $file) {
+                $filePath = $uploadDir . $file;
+
+                // Lit le contenu du fichier sans échapper les caractères spéciaux
+                $fileContent = '';
+                if (is_readable($filePath) && filesize($filePath) > 0) {
+                    $fileContent = file_get_contents($filePath);
+                } else {
+                    $fileContent = 'Fichier vide ou non lisible.';
                 }
-            } else {
-                echo "<li>Aucun fichier disponible.</li>";
+
+                // NE PAS échapper le contenu, ce qui rend l'application vulnérable à une XSS
+                echo "<li>
+                        <span><strong>{$file}</strong></span>
+                        <div style='background-color: #f4f4f4; padding: 10px; border-radius: 4px;'>{$fileContent}</div>
+                        <form action='dw.php' method='POST'>
+                            <input type='hidden' name='file' value='{$file}'>
+                            <button type='submit'>Télécharger</button>
+                        </form>
+                      </li>";
             }
-            ?>
-        </ul>
-    </div>
+        } else {
+            echo "<li>Aucun fichier disponible.</li>";
+        }
+        ?>
+    </ul>
+</div>
+
+
 </main>
 
 
 </body>
 </html>
+<?php
+// Chemin où stocker les fichiers
+$uploadDir = 'uploads/';
+
+// Vérifie si le dossier existe, sinon le crée
+if (!is_dir($uploadDir)) {
+    mkdir($uploadDir, 0777, true);
+}
+
+// Vérifie si un fichier a été envoyé
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
+    $fileName = $_FILES['file']['name'];
+    $targetFile = $uploadDir . $fileName;
+    // Déplace le fichier uploadé vers le dossier cible
+    if (move_uploaded_file($_FILES['file']['tmp_name'], $targetFile)) {
+        //echo "Fichier uploadé avec succès : <a href='{$targetFile}'>{$fileName}</a>";
+    } else {
+        echo "Erreur lors de l'upload du fichier.";
+    }
+}
+?>
