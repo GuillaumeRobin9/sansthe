@@ -54,7 +54,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
             <div class="message">
                 <?php if ($user['username'] == 'admin'): ?>
-                    <p>Félicitations, vous êtes admin de façon (non) légale. Voici votre flag : <strong>WARGAME{FLAGED2NDORDER}</strong></p>
+                    <p>Félicitations, vous êtes admin de façon (non) légale. Voici votre flag : <strong>WARGAME{FLAGED2NDORDERSQL}</strong></p>
                 <?php else: ?>
                     <p>Utilisateur introuvable.</p>
                 <?php endif; ?>
