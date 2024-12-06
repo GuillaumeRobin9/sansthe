@@ -38,3 +38,22 @@ Pour arrêter les conteneurs, exécutez la commande suivante dans le répertoire
 ````bash
 sudo docker-compose down
 ````
+
+
+## Fonctionnement et logique de l'application 
+
+Cette application web est un service destiné à la santé des utilisateurs.
+Elle se présente d'abord par une page de connexion et d'inscription permettant à l'utilisateur, une fois enregistré, d'accéder au site.
+Une fois la connexion effectuée, l'utilisateur a accès à un tableau de bord présentant ses options.
+
+L'utilisateur peut :
+
+- Accéder à son espace personnel
+- Remplir un formulaire de pré-rendez-vous
+- Consulter les messages (non configurés)
+- Se déconnecter
+
+Depuis son espace personnel, l'utilisateur peut télécharger des fichiers médicaux, tels que des ordonnances.
+Depuis le formulaire de pré-rendez-vous, l'utilisateur peut renseigner des informations relatives à sa prise de rendez-vous.
+
+Une section du site est également prévue pour le côté médecin, mais elle est encore en cours de construction.
