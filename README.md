@@ -17,7 +17,7 @@ Avant de commencer, assurez-vous d'avoir Docker et Docker Compose installés sur
 
 ````bash
    sudo docker pull guillaumerobin9/sansthe:latest
-   ````
+````
 
 2. **Démarrer l'application avec Docker Compose**
 
@@ -32,7 +32,8 @@ sudo docker-compose up --build
 Une fois les conteneurs démarrés, vous pouvez accéder à l'application via votre navigateur en vous connectant au port localhost:81 :
 
 
-Arrêter l'application
+4. Arrêter l'application, 
+
 Pour arrêter les conteneurs, exécutez la commande suivante dans le répertoire contenant le fichier docker-compose.yml :
 
 ````bash
