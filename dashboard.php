@@ -32,7 +32,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 <li><a href="mon_espace.php">Mon Espace</a></li>
                 <li><a href="pre-rendez-vous.php">Formulaire de pre-rendez-vous</a></li>
                 <li><a href="">Messages</a></li>
-                <li><a href="#">Déconnexion</a></li>
+                <li><a href="logout.php">Déconnexion</a></li>
             </ul>
         </div>
         
@@ -55,7 +55,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 <?php if ($user['username'] == 'admin'): ?>
                     <p>Félicitations, vous êtes admin de façon (non) légale. Voici votre flag : <strong>WARGAME{FLAGED2NDORDERSQL}</strong></p>
                 <?php else: ?>
-                    <p>Utilisateur introuvable.</p>
+                    <p>Cet utilisateur ne possède pas de flag (dommage)</p>
                 <?php endif; ?>
             </div>
         </div>
